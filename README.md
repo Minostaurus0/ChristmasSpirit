@@ -1,5 +1,5 @@
 # Christmas Spirit: Rewoven
-A port of the Christmas Spirit mod for 1.16 forge
+A port of the Christmas Spirit mod for 1.19.2 fabric based on a fork from Christmas Spirit: Rewoven.
 
 ## Setup
 
