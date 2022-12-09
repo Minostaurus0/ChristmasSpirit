@@ -13,7 +13,6 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
@@ -32,9 +31,9 @@ public class WrappedPresentBlockItem extends BlockItem {
         PresentConstructor constructor = PresentConstructor.fromStack(stack);
 
         if (!constructor.toPlayerName.isEmpty()) {
-            tooltip.add(new LiteralText("From: " + Formatting.GOLD + constructor.fromPlayerName));
-            tooltip.add(new LiteralText("To: " + Formatting.GOLD + constructor.toPlayerName));
-            tooltip.add(new LiteralText("Open on the " + Formatting.GOLD + TimeHelper.getFormattedDay(constructor.getActualDay())));
+            tooltip.add(Text.literal("From: " + Formatting.GOLD + constructor.fromPlayerName));
+            tooltip.add(Text.literal("To: " + Formatting.GOLD + constructor.toPlayerName));
+            tooltip.add(Text.literal("Open on the " + Formatting.GOLD + TimeHelper.getFormattedDay(constructor.getActualDay())));
         }
     }
 

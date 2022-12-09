@@ -4,10 +4,10 @@ package io.github.frqnny.cspirit.client.model;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.HorseEntityModel;
-import net.minecraft.entity.passive.HorseBaseEntity;
+import net.minecraft.entity.passive.HorseEntity;
 import net.minecraft.util.math.MathHelper;
 
-public class ReindeerModel<T extends HorseBaseEntity> extends HorseEntityModel<T> {
+public class ReindeerModel<T extends HorseEntity> extends HorseEntityModel<T> {
     protected final ModelPart body;
     protected final ModelPart head;
     private final ModelPart rightHindLeg;

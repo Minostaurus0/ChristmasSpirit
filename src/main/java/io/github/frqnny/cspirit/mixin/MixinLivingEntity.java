@@ -101,7 +101,7 @@ public abstract class MixinLivingEntity {
                 boolean killedWolf = killedEntity instanceof WolfEntity;
                 boolean killedFox = killedEntity instanceof FoxEntity;
                 boolean killedCat = killedEntity instanceof CatEntity;
-                boolean killedHorse = killedEntity instanceof HorseBaseEntity;
+                boolean killedHorse = killedEntity instanceof HorseEntity;
                 boolean killedDolphin = killedEntity instanceof DolphinEntity;
                 boolean killedVillager = killedEntity instanceof VillagerEntity;
                 boolean killedBaby = killedEntity instanceof AnimalEntity && killedEntity.isBaby();

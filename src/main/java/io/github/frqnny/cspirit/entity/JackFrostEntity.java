@@ -211,7 +211,7 @@ public class JackFrostEntity extends PathAwareEntity implements Angerable {
     }
 
     @Override
-    protected int getXpToDrop(PlayerEntity player) {
+    public int getXpToDrop() {
         return 40;
     }
 

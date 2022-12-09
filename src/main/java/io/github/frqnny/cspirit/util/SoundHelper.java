@@ -11,7 +11,7 @@ public class SoundHelper {
     public static void sendSoundToClient(ServerPlayerEntity player, SoundEvent sound) {
 
         if (Registry.SOUND_EVENT.getId(sound) != null) {
-            player.networkHandler.sendPacket(new PlaySoundIdS2CPacket(Registry.SOUND_EVENT.getId(sound), SoundCategory.BLOCKS, player.getPos(), 1, 1));
+            player.networkHandler.sendPacket(new PlaySoundIdS2CPacket(Registry.SOUND_EVENT.getId(sound), SoundCategory.BLOCKS, player.getPos(), 1, 1, 0));
         }
     }
 }

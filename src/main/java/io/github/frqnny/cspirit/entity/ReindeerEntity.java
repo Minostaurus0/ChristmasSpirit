@@ -17,7 +17,6 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.HorseBaseEntity;
 import net.minecraft.entity.passive.HorseEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -131,7 +130,7 @@ public class ReindeerEntity extends HorseEntity implements Flutterer {
 
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        HorseBaseEntity reindeer = ModEntityTypes.REINDEER_ENTITY.create(world);
+        HorseEntity reindeer = ModEntityTypes.REINDEER_ENTITY.create(world);
         setChildAttributes(entity, reindeer);
         return reindeer;
     }

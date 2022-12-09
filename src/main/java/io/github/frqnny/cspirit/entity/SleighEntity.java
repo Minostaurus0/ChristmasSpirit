@@ -132,7 +132,7 @@ public class SleighEntity extends BoatEntity {
     }
 
     @Override
-    public float method_7548() {
+    public float getNearbySlipperiness() {
         return 0.8F;
     }
 

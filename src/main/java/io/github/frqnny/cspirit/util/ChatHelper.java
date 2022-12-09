@@ -2,8 +2,8 @@ package io.github.frqnny.cspirit.util;
 
 import io.github.frqnny.cspirit.ChristmasSpirit;
 import net.minecraft.entity.Entity;
-import net.minecraft.network.MessageType;
-import net.minecraft.text.LiteralText;
+import net.minecraft.network.message.*;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Util;
 import net.minecraft.world.World;
@@ -30,6 +30,6 @@ public class ChatHelper {
      * @param message The message.
      */
     public static void broadcastMessage(World world, String message) {
-        Objects.requireNonNull(world.getServer()).getPlayerManager().broadcast(new LiteralText(message), MessageType.CHAT, Util.NIL_UUID);
+        Objects.requireNonNull(world.getServer()).getPlayerManager().broadcast(Text.literal(message), false);
     }
 }

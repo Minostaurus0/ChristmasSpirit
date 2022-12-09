@@ -1,9 +1,8 @@
 package io.github.frqnny.cspirit.util;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Util;
 
 public class UnitChatMessage {
 
@@ -19,8 +18,8 @@ public class UnitChatMessage {
 
         for (Entity player : players) {
 
-            LiteralText componentString = new LiteralText(getUnitName() + (format + message));
-            player.sendSystemMessage(componentString, Util.NIL_UUID);
+            Text componentString = Text.literal(getUnitName() + (format + message));
+            player.sendMessage(componentString);//, Util.NIL_UUID);
         }
     }
 

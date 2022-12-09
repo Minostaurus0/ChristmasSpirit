@@ -88,8 +88,8 @@ public class ModItems {
     public static final Item ICE_SKATES = new ArmorItem(CSArmorTiers.ICE_SKATES, EquipmentSlot.FEET, new FabricItemSettings().group(ChristmasSpirit.MAIN).maxCount(1));
 
     //DISCS
-    public static final Item DISC_MCCHRISTMAS = new CSMusicDiscItem(15, ModSounds.MCCHRISTMAS, new FabricItemSettings().maxCount(1).group(ChristmasSpirit.MAIN).rarity(Rarity.RARE));
-    public static final Item DISC_JARED = new CSMusicDiscItem(15, ModSounds.JARED, new FabricItemSettings().maxCount(1).group(ChristmasSpirit.MAIN).rarity(Rarity.RARE));
+    public static final Item DISC_MCCHRISTMAS = new CSMusicDiscItem(15, ModSounds.MCCHRISTMAS, new FabricItemSettings().maxCount(1).group(ChristmasSpirit.MAIN).rarity(Rarity.RARE), 4);
+    public static final Item DISC_JARED = new CSMusicDiscItem(15, ModSounds.JARED, new FabricItemSettings().maxCount(1).group(ChristmasSpirit.MAIN).rarity(Rarity.RARE), 2);
 
     //OTHER
     public static final Item SLEIGH = new SleighItem(new FabricItemSettings().group(ChristmasSpirit.MAIN).maxCount(1));

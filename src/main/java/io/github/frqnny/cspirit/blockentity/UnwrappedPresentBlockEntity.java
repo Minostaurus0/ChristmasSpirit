@@ -11,7 +11,6 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,7 +31,7 @@ public class UnwrappedPresentBlockEntity extends CSBlockEntity implements Extend
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText(this.getCachedState().getBlock().getTranslationKey());
+        return Text.translatable(this.getCachedState().getBlock().getTranslationKey());
     }
 
     @Nullable

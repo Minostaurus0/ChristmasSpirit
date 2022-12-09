@@ -17,7 +17,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -27,8 +27,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.BiomeKeys;
 
 import java.util.Set;
 import java.util.function.Predicate;
@@ -59,7 +61,7 @@ public class ChristmasSpirit implements ModInitializer {
 
     public static Predicate<BiomeSelectionContext> shouldFreezeOceanBiomeIfOcean() {
         return (context) -> {
-            if (context.getBiome().getCategory() == Biome.Category.OCEAN) {
+            if (context.getBiomeKey() == BiomeKeys.OCEAN) {
                 return config.worldGen.freezeOceans;
             } else {
                 return true;
@@ -73,8 +75,8 @@ public class ChristmasSpirit implements ModInitializer {
 
     public static Predicate<BiomeSelectionContext> deerSpawn() {
         return (context) -> {
-            Biome.Category category = context.getBiome().getCategory();
-            return category == Biome.Category.PLAINS || category == Biome.Category.FOREST;
+            RegistryKey<Biome> category = context.getBiomeKey();
+            return category == BiomeKeys.PLAINS || category == BiomeKeys.FOREST;
         };
     }
 
@@ -90,7 +92,7 @@ public class ChristmasSpirit implements ModInitializer {
         ModSounds.init();
         ModEffects.init();
         ModPackets.init();
-        CommandRegistrationCallback.EVENT.register(((commandDispatcher, b) -> CSCommandBase.register(commandDispatcher)));
+        CommandRegistrationCallback.EVENT.register(((dispatcher, registryAccess, environment) -> CSCommandBase.register(dispatcher)));
         ModEvents.init();
 
         BiomeModifications.create(

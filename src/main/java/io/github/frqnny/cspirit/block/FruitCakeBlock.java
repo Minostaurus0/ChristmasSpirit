@@ -11,7 +11,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -60,8 +59,8 @@ public class FruitCakeBlock extends CakeBlock implements IItemSpiritSupplier {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(new TranslatableText("hunger.icon.4"));
-        tooltip.add(new TranslatableText("saturation.icon.0.3"));
+        tooltip.add(Text.translatable("hunger.icon.4"));
+        tooltip.add(Text.translatable("saturation.icon.0.3"));
     }
 
     @Override

@@ -7,10 +7,10 @@ import io.github.frqnny.cspirit.client.render.feature.ReindeerLeatherArmorFeatur
 import io.github.frqnny.cspirit.client.render.feature.ReindeerMarkingsFeatureRenderer;
 import io.github.frqnny.cspirit.entity.ReindeerEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.HorseBaseEntityRenderer;
+import net.minecraft.client.render.entity.AbstractHorseEntityRenderer;
 import net.minecraft.util.Identifier;
 
-public class ReindeerEntityRenderer extends HorseBaseEntityRenderer<ReindeerEntity, ReindeerModel<ReindeerEntity>> {
+public class ReindeerEntityRenderer extends AbstractHorseEntityRenderer<ReindeerEntity, ReindeerModel<ReindeerEntity>> {
     public static final Identifier TEXTURE = ChristmasSpirit.id("textures/entity/reindeer.png");
 
     public ReindeerEntityRenderer(EntityRendererFactory.Context ctx) {

@@ -27,8 +27,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.Item;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
 
@@ -88,23 +87,23 @@ public class ChristmasSpiritClient implements ClientModInitializer {
                     Item item = stack.getItem();
                     if (item.isFood() && item.getFoodComponent() != null && stack.getTranslationKey().contains("cspirit")) {
                         String hunger = "hunger.icon." + item.getFoodComponent().getHunger();
-                        lines.add(new TranslatableText(hunger));
+                        lines.add(Text.translatable(hunger));
                         String saturation = "saturation.icon." + item.getFoodComponent().getSaturationModifier();
-                        lines.add(new TranslatableText(saturation));
+                        lines.add(Text.translatable(saturation));
                     }
 
                     if (ChristmasSpirit.NAUGHTY.contains(item)) {
                         if (ChristmasSpirit.getConfig().misc.naughtyItems) {
-                            lines.add(new LiteralText(""));
-                            lines.add(new TranslatableText("grinch.icon"));
+                            lines.add(Text.literal(""));
+                            lines.add(Text.translatable("grinch.icon"));
                         } else {
-                            lines.add(new LiteralText(""));
-                            lines.add(new TranslatableText(Formatting.RED + "Disabled by config!"));
+                            lines.add(Text.literal(""));
+                            lines.add(Text.translatable(Formatting.RED + "Disabled by config!"));
                         }
                     }
 
                     if (item instanceof IItemSpiritSupplier) {
-                        lines.add(new TranslatableText("santa.icon." + ((IItemSpiritSupplier) item).getMaxStacks()));
+                        lines.add(Text.translatable("santa.icon." + ((IItemSpiritSupplier) item).getMaxStacks()));
                     }
                 }
         );
@@ -116,7 +115,7 @@ public class ChristmasSpiritClient implements ClientModInitializer {
             UUID uuid = buf.readUuid();
             boolean isWhite = buf.readBoolean();
             ChristmasTreeEntity tree = new ChristmasTreeEntity(MinecraftClient.getInstance().world, new Vec3d(x, y, z), 0, isWhite);
-            tree.updateTrackedPosition(new Vec3d(x, y, z));
+            tree.updateTrackedPosition(x, y, z);
             tree.setId(entityId);
             tree.setUuid(uuid);
             client.world.addEntity(entityId, tree);
@@ -130,7 +129,7 @@ public class ChristmasSpiritClient implements ClientModInitializer {
             UUID ownerUUID = buf.readUuid();
             byte type = buf.readByte();
             CandyCaneProjectileEntity candyCane = new CandyCaneProjectileEntity(MinecraftClient.getInstance().world, client.world.getPlayerByUuid(ownerUUID), type);
-            candyCane.updateTrackedPosition(new Vec3d(x, y, z));
+            candyCane.updateTrackedPosition(x, y, z);
             candyCane.setId(entityId);
             candyCane.setUuid(uuid);
             client.world.addEntity(entityId, candyCane);

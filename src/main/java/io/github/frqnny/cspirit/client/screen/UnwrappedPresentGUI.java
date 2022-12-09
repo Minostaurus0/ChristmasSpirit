@@ -20,9 +20,9 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.text.Text;
 
 import java.util.function.Function;
 
@@ -59,7 +59,7 @@ public class UnwrappedPresentGUI extends SyncedGuiDescription {
 
         WButton wrapPresentButton = new WButton();
         wrapPresentButton.setOnClick(this::wrapPresent);
-        wrapPresentButton.setLabel(new LiteralText("Wrap Present"));
+        wrapPresentButton.setLabel(Text.literal("Wrap Present"));
         root.add(wrapPresentButton, 51, 84, 74, 16);
 
         root.add(this.createPlayerInventoryPanel(), 8, 104);
@@ -90,10 +90,10 @@ public class UnwrappedPresentGUI extends SyncedGuiDescription {
         boolean hasToPlayerName = !textField.getText().isEmpty();
 
         if (!notEmpty) {
-            playerInventory.player.sendMessage(new LiteralText("The present is empty!").formatted(Formatting.RED), false);
+            playerInventory.player.sendMessage(Text.literal("The present is empty!").formatted(Formatting.RED), false);
         }
         if (!hasToPlayerName) {
-            playerInventory.player.sendMessage(new LiteralText("The present needs a player to go to!").formatted(Formatting.RED), false);
+            playerInventory.player.sendMessage(Text.literal("The present needs a player to go to!").formatted(Formatting.RED), false);
         }
 
 

@@ -32,7 +32,7 @@ public class ModEvents {
                             PresentHelper.giveSantaPresent((ServerPlayerEntity) entity, TimeHelper.getCurrentDay() - 1);
                         }
                     } else if (entity instanceof ZombieEntity || entity instanceof SkeletonEntity) {
-                        Random random = ((HostileEntity) entity).getRandom();
+                        net.minecraft.util.math.random.Random random = ((HostileEntity) entity).getRandom();
                         if (random.nextInt(ChristmasSpirit.getConfig().misc.mobArmorRarity) == 0) {
 
                             MobEntity mob = (MobEntity) entity;
