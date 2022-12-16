@@ -25,7 +25,7 @@ public class SnowGlobeBlock extends CSBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            ((ServerWorld) world).setWeather(0, 20 * 60 * 5, true, false);
+            ((ServerWorld) world).setWeather(0, 60 * 15, true, false);
         } else {
             for (int i = 0; i < 10; i++) {
                 world.addParticle(new BlockStateParticleEffect(ParticleTypes.BLOCK, Blocks.SNOW_BLOCK.getDefaultState()), pos.getX() + 0.5D, pos.getY() + 0.2D, pos.getZ() + 0.5D, 0, 0, 0);

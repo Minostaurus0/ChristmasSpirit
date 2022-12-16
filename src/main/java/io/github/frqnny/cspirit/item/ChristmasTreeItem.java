@@ -24,7 +24,7 @@ public class ChristmasTreeItem extends Item implements IItemSpiritSupplier {
 
             context.getStack().decrement(1);
 
-            if (!context.getWorld().isClient) {
+            if (!context.getWorld().isClient()) {
                 context.getPlayer().playSound(SoundEvents.BLOCK_WOOD_PLACE, 1, 1);
                 context.getPlayer().playSound(SoundEvents.BLOCK_GRASS_PLACE, 1, 1);
             }

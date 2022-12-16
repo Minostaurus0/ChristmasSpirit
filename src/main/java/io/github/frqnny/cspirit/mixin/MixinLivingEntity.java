@@ -13,6 +13,7 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -53,7 +54,24 @@ public abstract class MixinLivingEntity {
                     double slipperiness = world.getBlockState(pos).getBlock().getSlipperiness();
 
                     if (slipperiness > 0.7D) {
-                        Objects.requireNonNull(entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)).setBaseValue(entity.isSprinting() ? 0.4F : 0.2F);
+                        if (entity.forwardSpeed != 0 || entity.sidewaysSpeed != 0)
+                        {
+                            Vec3d vel = entity.getVelocity();
+                            Vec3d vel2D = new Vec3d(vel.x, 0, vel.z);
+                            Vec3d newVel = new Vec3d(0, 0, 1).rotateY(-(float)Math.toRadians(entity.getYaw())).multiply(vel2D.length());
+                            entity.setVelocity(newVel.x, vel.y, newVel.z);
+
+                            if(entity.getVelocity().length() > 4)
+                                Objects.requireNonNull(entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)).setBaseValue(entity.isSprinting() ? 0.18F : 0.12F);
+                        }
+                        else if(entity.getVelocity().length() < 4)
+                        {
+                            Objects.requireNonNull(entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)).setBaseValue(0.1F);
+                        }
+
+                        if (!entity.hasNoDrag())
+                            entity.setVelocity(entity.getVelocity().multiply(1.06f));
+                            
                         return;
                     }
                 }
